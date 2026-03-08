@@ -20,6 +20,6 @@ class VanillaOption : public Option {
 class EuropeanOption : public VanillaOption {
     public:
         using VanillaOption::VanillaOption;
-}
+};
 
 

@@ -22,6 +22,8 @@ class CarrMadanModel : public HestonModel {
             double S0,
             std::optional<double> exercise_t = std::nullopt,
             double alpha = DEFAULT_ALPHA) const;
+        
+        using complex_t = std::complex<double>;
     
     private:
         struct Pricer {
@@ -52,15 +54,16 @@ class CarrMadanModel : public HestonModel {
                   v0_(model.v0_), 
                   r_(model.r_)
             {}
+        
             
-            double operator()() const;
-            
-            std::complex<double> d(double u) const;
-            std::complex<double> g(double u) const;
-            std::complex<double> C(double u) const;
-            std::complex<double> D(double u) const;
-            std::complex<double> characteristic_function(double u) const;
-            double c(double k) const;
-            double carr_madan_transform(double v) const;      
+            complex_t g(complex_t u) const;
+            complex_t d(complex_t u) const;
+            complex_t C(complex_t u) const;
+            complex_t D(complex_t u) const;
+            complex_t characteristic_function(complex_t u) const;
+            complex_t c(complex_t k) const;
+            complex_t carr_madan_transform(complex_t u) const; 
+            double carr_madan_inverse_transform(complex_t k) const;
+            double operator()() const;     
         };     
 };

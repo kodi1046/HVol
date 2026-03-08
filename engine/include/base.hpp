@@ -47,7 +47,6 @@ class Option {
         
         virtual double payoff(double S0) const = 0;
 
-    
     const double strike_, maturity_;
     const OptionType option_type_;
 };
