@@ -4,6 +4,7 @@
 #include <ranges>
 #include <utility>
 #include <complex> // IWYU pragma: keep
+#include "utils.hpp"
 
 namespace fft {
      
@@ -14,6 +15,7 @@ namespace fft {
             { a + b } -> std::same_as<T>;
             { a - b } -> std::same_as<T>;
             { a * b } -> std::same_as<T>;
+            { a / b } -> std::same_as<T>;
         };
     
     namespace tag {
@@ -75,5 +77,5 @@ namespace fft {
 }
 
 // Actual implementation
-#include "fft.tpp"
+#include "fft.ipp"
 

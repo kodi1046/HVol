@@ -1,6 +1,5 @@
 #pragma once
-
-// DataFrame wrapper around a library. 
-class DataFrame {
-    
-};
+#include <cstddef>
+namespace utils {
+    std::size_t  bit_reverse(std::size_t x, std::size_t log2n);
+}

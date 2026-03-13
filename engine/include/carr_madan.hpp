@@ -1,5 +1,6 @@
 #include "base.hpp"
 #include <complex>
+#include <vector>
 
 namespace {
     inline constexpr double DEFAULT_ALPHA = 1.5;
@@ -17,7 +18,7 @@ class CarrMadanModel : public HestonModel {
             : HestonModel(kappa, theta, xi, rho, v0, r)
         {}
         
-        double price(
+        std::vector<double> price(
             const Option& option,
             double S0,
             std::optional<double> exercise_t = std::nullopt,
@@ -54,8 +55,7 @@ class CarrMadanModel : public HestonModel {
                   v0_(model.v0_), 
                   r_(model.r_)
             {}
-        
-            
+         
             complex_t g(complex_t u) const;
             complex_t d(complex_t u) const;
             complex_t C(complex_t u) const;
@@ -63,7 +63,6 @@ class CarrMadanModel : public HestonModel {
             complex_t characteristic_function(complex_t u) const;
             complex_t c(complex_t k) const;
             complex_t carr_madan_transform(complex_t u) const; 
-            double carr_madan_inverse_transform(complex_t k) const;
-            double operator()() const;     
+            std::vector<double> operator()(std::size_t N = 8192, double eta = 0.25) const;     
         };     
 };
